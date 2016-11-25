@@ -30,7 +30,7 @@ public class FlickrPresenter {
         mFlickrService
                 .getApi()
                 .getObservableRecentPhotos(
-                        FlickrService.METHOD,
+                        FlickrService.METHOD_GET_RECENT,
                         FlickrService.KEY,
                         FlickrService.JSON,
                         FlickrService.NO_JSON_CALLBACK)

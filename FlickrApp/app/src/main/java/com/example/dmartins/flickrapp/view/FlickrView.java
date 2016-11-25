@@ -12,4 +12,6 @@ public interface FlickrView {
 
     void displayRecentGallery(ArrayList<Photo> listPhotos);
 
+    void onPhotoClicked();
+
 }

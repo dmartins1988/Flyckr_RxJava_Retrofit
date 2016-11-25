@@ -1,7 +1,9 @@
 package com.example.dmartins.flickrapp.service;
 
+import com.example.dmartins.flickrapp.model.PhotoInfoResponse;
 import com.example.dmartins.flickrapp.model.PhotoResponse;
 
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -17,7 +19,8 @@ public class FlickrService {
 
     private static final String URL = "https://api.flickr.com/services/";
     public static String KEY = "cf2a63a4af252b0262a8fab86764790b";
-    public static String METHOD = "flickr.photos.getRecent";
+    public static String METHOD_GET_RECENT = "flickr.photos.getRecent";
+    public static String METHOD_GET_PHOTO_DETAIL = "flickr.photos.getInfo";
     public static String JSON = "json";
     public static String NO_JSON_CALLBACK = "1";
     private FlickApi mFlickrApi;
@@ -45,6 +48,14 @@ public class FlickrService {
                                                             @Query("api_key") String apiKey,
                                                             @Query("format") String format,
                                                             @Query("nojsoncallback") String noJsonCallback);
+
+        @GET("rest/")
+        Call<PhotoInfoResponse> getObservablePhotoInfo(@Query("method") String method,
+                                                       @Query("api_key") String apiKey,
+                                                       @Query("format") String format,
+                                                       @Query("nojsoncallback") String noJsonCallback,
+                                                       @Query("photo_id") String photoId);
+
 
     }
 

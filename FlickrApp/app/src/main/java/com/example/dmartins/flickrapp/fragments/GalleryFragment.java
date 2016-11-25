@@ -3,6 +3,7 @@ package com.example.dmartins.flickrapp.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,6 +24,8 @@ import java.util.ArrayList;
  */
 
 public class GalleryFragment extends Fragment implements FlickrView{
+
+    private static final String TAG = GalleryFragment.class.getSimpleName();
 
     RecyclerView mRecyclerView;
     GalleryAdapter mGalleryAdapter;
@@ -59,5 +62,20 @@ public class GalleryFragment extends Fragment implements FlickrView{
         mGalleryAdapter.clear();
         mGalleryAdapter.allPhotos(listPhotos);
         mGalleryAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onPhotoClicked() {
+        if (mGalleryAdapter != null) {
+            mGalleryAdapter.setOnClickListener(new GalleryAdapter.OnClickListener() {
+                @Override
+                public void onPhotoClicked(Photo photo) {
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, PhotoInfoFragment.newInstance(photo));
+                    ft.addToBackStack(TAG);
+                    ft.commit();
+                }
+            });
+        }
     }
 }
