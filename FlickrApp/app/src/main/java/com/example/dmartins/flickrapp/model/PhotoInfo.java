@@ -2,15 +2,21 @@ package com.example.dmartins.flickrapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
- * Created by E491 on 25/11/2016.
+ * Created by David Martins on 25/11/2016.
  */
-public class PhotoInfo {
+public class PhotoInfo implements Serializable{
 
     @SerializedName("owner")
     private Owner owner;
     @SerializedName("title")
     private Title title;
+    @SerializedName("dates")
+    private Dates dates;
+    @SerializedName("comments")
+    private Comments comment;
 
 
     public Owner getOwner() {
@@ -29,4 +35,19 @@ public class PhotoInfo {
         this.title = title;
     }
 
+    public Dates getDates() {
+        return dates;
+    }
+
+    public void setDates(Dates dates) {
+        this.dates = dates;
+    }
+
+    public Comments getComment() {
+        return comment;
+    }
+
+    public void setComment(Comments comment) {
+        this.comment = comment;
+    }
 }

@@ -10,17 +10,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dmartins.flickrapp.R;
+import com.example.dmartins.flickrapp.model.Comments;
+import com.example.dmartins.flickrapp.model.Dates;
 import com.example.dmartins.flickrapp.model.Owner;
 import com.example.dmartins.flickrapp.model.Photo;
 import com.example.dmartins.flickrapp.model.PhotoInfoResponse;
+import com.example.dmartins.flickrapp.model.Title;
 import com.example.dmartins.flickrapp.presenter.FlickrInfoPresenter;
 import com.example.dmartins.flickrapp.presenter.FlickrPresenter;
 import com.example.dmartins.flickrapp.service.FlickrService;
+import com.example.dmartins.flickrapp.utils.DateUtil;
 import com.example.dmartins.flickrapp.view.FlickrInfoView;
 import com.squareup.picasso.Picasso;
 
 /**
- * Created by E491 on 25/11/2016.
+ * Created by David Martins on 25/11/2016.
  */
 
 public class PhotoInfoFragment extends Fragment implements FlickrInfoView {
@@ -74,9 +78,22 @@ public class PhotoInfoFragment extends Fragment implements FlickrInfoView {
     @Override
     public void showPhotoInfo(PhotoInfoResponse photo) {
         Owner ownerInfo = photo.getPhotoInfo().getOwner();
-        if (!ownerInfo.getUsername().isEmpty() && !ownerInfo.getRealname().isEmpty()) {
+        if (!ownerInfo.getUsername().isEmpty()
+                && !ownerInfo.getRealname().isEmpty()) {
             usernameTv.setText(photo.getPhotoInfo().getOwner().getUsername());
-            realNameTv.setText(photo.getPhotoInfo().getOwner().getRealname());
+            //realNameTv.setText(photo.getPhotoInfo().getOwner().getRealname());
+        }
+        Title titleInfo = photo.getPhotoInfo().getTitle();
+        if (titleInfo.getContent().isEmpty()) {
+
+        }
+        Dates dateInfo = photo.getPhotoInfo().getDates();
+        if (!dateInfo.getPosted().isEmpty()) {
+            realNameTv.setText(DateUtil.convertDateToFormat(Long.parseLong(dateInfo.getPosted())));
+        }
+        Comments commentsInfo = photo.getPhotoInfo().getComment();
+        if (!commentsInfo.getContent().isEmpty()) {
+
         }
     }
 

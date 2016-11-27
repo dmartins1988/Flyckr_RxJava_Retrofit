@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by E491 on 25/11/2016.
+ * Created by David Martins on 25/11/2016.
  */
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder> {

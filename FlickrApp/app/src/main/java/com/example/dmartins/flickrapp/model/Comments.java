@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 /**
- * Created by David Martins on 25/11/2016.
+ * Created by davidmartins on 27/11/2016.
  */
-public class Title implements Serializable {
+public class Comments implements Serializable {
 
     @SerializedName("_content")
     private String content;

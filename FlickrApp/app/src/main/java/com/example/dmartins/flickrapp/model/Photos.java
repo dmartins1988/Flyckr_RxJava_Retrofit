@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by E491 on 25/11/2016.
+ * Created by David Martins on 25/11/2016.
  */
 
 public class Photos implements Serializable {

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 /**
- * Created by E491 on 25/11/2016.
+ * Created by David Martins on 25/11/2016.
  */
 
 public class Photo implements Serializable {

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 /**
- * Created by E491 on 25/11/2016.
+ * Created by David Martins on 25/11/2016.
  */
 public class Dates implements Serializable {
 
@@ -15,6 +15,8 @@ public class Dates implements Serializable {
     private String taken;
     @SerializedName("lastupdate")
     private String lastUpdate;
+    @SerializedName("views")
+    private String views;
 
     public String getPosted() {
         return posted;
@@ -38,5 +40,13 @@ public class Dates implements Serializable {
 
     public void setLastUpdate(String lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public String getViews() {
+        return views;
+    }
+
+    public void setViews(String views) {
+        this.views = views;
     }
 }

@@ -5,7 +5,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Created by E491 on 25/11/2016.
+ * Created by David Martins on 25/11/2016.
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -30,4 +30,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    @Override
+    public void onBackPressed() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
+    }
 }
