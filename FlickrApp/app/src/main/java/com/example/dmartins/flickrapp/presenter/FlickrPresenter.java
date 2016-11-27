@@ -65,4 +65,8 @@ public class FlickrPresenter {
 
     }
 
+    public void showPhoto() {
+        mFlickrView.displayPhotoClicked();
+    }
+
 }

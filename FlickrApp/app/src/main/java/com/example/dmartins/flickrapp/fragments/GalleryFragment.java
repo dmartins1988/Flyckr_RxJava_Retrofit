@@ -52,7 +52,7 @@ public class GalleryFragment extends Fragment implements FlickrView{
         mFlickrService = new FlickrService();
         mFlickrPresenter = new FlickrPresenter(this, mFlickrService);
         mFlickrPresenter.loadGallery();
-
+        mFlickrPresenter.showPhoto();
         return v;
     }
 
@@ -65,17 +65,17 @@ public class GalleryFragment extends Fragment implements FlickrView{
     }
 
     @Override
-    public void onPhotoClicked() {
-        if (mGalleryAdapter != null) {
-            mGalleryAdapter.setOnClickListener(new GalleryAdapter.OnClickListener() {
-                @Override
-                public void onPhotoClicked(Photo photo) {
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.container, PhotoInfoFragment.newInstance(photo));
-                    ft.addToBackStack(TAG);
-                    ft.commit();
-                }
-            });
-        }
+    public void displayPhotoClicked() {
+        mGalleryAdapter.setOnItemClickListener(new GalleryAdapter.OnClickListener() {
+            @Override
+            public void onClick(Photo photo) {
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.container, PhotoInfoFragment.newInstance(photo));
+                ft.addToBackStack(TAG);
+                ft.commit();
+            }
+        });
     }
+
+
 }

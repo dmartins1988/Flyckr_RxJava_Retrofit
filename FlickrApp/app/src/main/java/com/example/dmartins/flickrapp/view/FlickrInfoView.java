@@ -8,4 +8,5 @@ import com.example.dmartins.flickrapp.model.PhotoInfoResponse;
 
 public interface FlickrInfoView {
     void showPhotoInfo(PhotoInfoResponse photo);
+    void displayPhoto();
 }

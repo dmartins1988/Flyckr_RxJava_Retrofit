@@ -22,20 +22,21 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
 
     private ArrayList<Photo> mListPhoto;
     private Context mContext;
-    private OnClickListener mListener;
+    private static OnClickListener mListener;
+
+    public interface OnClickListener {
+        void onClick(Photo photo);
+    }
+
+    public void setOnItemClickListener(OnClickListener listener) {
+        this.mListener = listener;
+    }
 
     public GalleryAdapter(ArrayList<Photo> mListPhoto, Context mContext) {
         this.mListPhoto = mListPhoto;
         this.mContext = mContext;
     }
 
-    public interface OnClickListener {
-        void onPhotoClicked(Photo photo);
-    }
-
-    public void setOnClickListener(OnClickListener listener) {
-        this.mListener = listener;
-    }
 
     @Override
     public GalleryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -65,14 +66,14 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.photo_item_img_view);
 
-            itemView.setOnClickListener(this);
+            imageView.setOnClickListener(this);
 
         }
 
         @Override
         public void onClick(View view) {
             if (mListener != null) {
-                mListener.onPhotoClicked(mListPhoto.get(getAdapterPosition()));
+                mListener.onClick(mListPhoto.get(getAdapterPosition()));
             }
         }
     }

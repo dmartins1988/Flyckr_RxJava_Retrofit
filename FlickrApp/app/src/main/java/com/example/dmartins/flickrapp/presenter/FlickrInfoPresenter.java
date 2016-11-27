@@ -19,7 +19,11 @@ public class FlickrInfoPresenter {
 
     FlickrInfoView mFlickrInfoView;
     FlickrService mFlickrService;
-    PhotoInfoResponse mPhotoInfoResponse;
+
+    public FlickrInfoPresenter(FlickrInfoView flickrInfoView, FlickrService flickrService) {
+        this.mFlickrInfoView = flickrInfoView;
+        this.mFlickrService = flickrService;
+    }
 
     public void getPhotoInfo(String photoId) {
         mFlickrService
@@ -35,6 +39,7 @@ public class FlickrInfoPresenter {
                     @Override
                     public void onResponse(Call<PhotoInfoResponse> call, Response<PhotoInfoResponse> response) {
                         mFlickrInfoView.showPhotoInfo(response.body());
+                        mFlickrInfoView.displayPhoto();
                     }
 
                     @Override
