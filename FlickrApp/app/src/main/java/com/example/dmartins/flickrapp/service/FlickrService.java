@@ -1,5 +1,6 @@
 package com.example.dmartins.flickrapp.service;
 
+import com.example.dmartins.flickrapp.model.CommentsResponse;
 import com.example.dmartins.flickrapp.model.PhotoInfoResponse;
 import com.example.dmartins.flickrapp.model.PhotoResponse;
 
@@ -21,6 +22,8 @@ public class FlickrService {
     public static String KEY = "cf2a63a4af252b0262a8fab86764790b";
     public static String METHOD_GET_RECENT = "flickr.photos.getRecent";
     public static String METHOD_GET_PHOTO_DETAIL = "flickr.photos.getInfo";
+    public static String METHOD_GET_PHOTO_COMMENTS = "flickr.photos.comments.getList";
+    public static String METHOD_GET_BY_USERNAME = "flickr.people.findByUsername";
     public static String JSON = "json";
     public static String NO_JSON_CALLBACK = "1";
     private FlickApi mFlickrApi;
@@ -50,12 +53,18 @@ public class FlickrService {
                                                             @Query("nojsoncallback") String noJsonCallback);
 
         @GET("rest/")
-        Call<PhotoInfoResponse> getObservablePhotoInfo(@Query("method") String method,
-                                                       @Query("api_key") String apiKey,
-                                                       @Query("format") String format,
-                                                       @Query("nojsoncallback") String noJsonCallback,
-                                                       @Query("photo_id") String photoId);
+        Call<PhotoInfoResponse> getPhotoInfo(@Query("method") String method,
+                                             @Query("api_key") String apiKey,
+                                             @Query("format") String format,
+                                             @Query("nojsoncallback") String noJsonCallback,
+                                             @Query("photo_id") String photoId);
 
+        @GET("rest/")
+        Call<CommentsResponse> getPhotoComments(@Query("method") String method,
+                                                @Query("api_key") String apiKey,
+                                                @Query("format") String format,
+                                                @Query("nojsoncallback") String noJsonCallback,
+                                                @Query("photo_id") String photoId);
 
     }
 

@@ -3,20 +3,33 @@ package com.example.dmartins.flickrapp.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by davidmartins on 27/11/2016.
+ * Created by E491 on 28/11/2016.
  */
+
 public class Comments implements Serializable {
 
-    @SerializedName("_content")
-    private String content;
+    @SerializedName("photo_id")
+    private String photoId;
+    @SerializedName("comment")
+    private List<Comment> comment;
 
-    public String getContent() {
-        return content;
+    public String getPhotoId() {
+        return photoId;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setPhotoId(String photoId) {
+        this.photoId = photoId;
+    }
+
+    public List<Comment> getComment() {
+        return comment;
+    }
+
+    public void setComment(ArrayList<Comment> comment) {
+        this.comment = comment;
     }
 }

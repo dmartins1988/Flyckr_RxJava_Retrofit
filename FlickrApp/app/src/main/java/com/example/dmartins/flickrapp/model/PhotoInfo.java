@@ -16,7 +16,7 @@ public class PhotoInfo implements Serializable{
     @SerializedName("dates")
     private Dates dates;
     @SerializedName("comments")
-    private Comments comment;
+    private Comment comment;
 
 
     public Owner getOwner() {
@@ -43,11 +43,11 @@ public class PhotoInfo implements Serializable{
         this.dates = dates;
     }
 
-    public Comments getComment() {
+    public Comment getComment() {
         return comment;
     }
 
-    public void setComment(Comments comment) {
+    public void setComment(Comment comment) {
         this.comment = comment;
     }
 }
